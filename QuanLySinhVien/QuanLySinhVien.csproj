@@ -57,7 +57,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QuanLySinhVienDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Untill.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
