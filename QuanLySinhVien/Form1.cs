@@ -167,7 +167,7 @@ namespace QuanLySinhVien
         private void DtgSinhVien_SelectionChanged(object sender, EventArgs e)
         {
             dateTimePicker1.Text = dtgSinhVien[4, dtgSinhVien.CurrentRow.Index].Value.ToString();
-            tbGioitinh3.Text = dtgSinhVien[2, dtgSinhVien.CurrentRow.Index].Value.ToString();
+            tbHoTen3.Text = dtgSinhVien[2, dtgSinhVien.CurrentRow.Index].Value.ToString();
             tbSDT3.Text = dtgSinhVien[5, dtgSinhVien.CurrentRow.Index].Value.ToString();
             if ( String.Compare(dtgSinhVien[3, dtgSinhVien.CurrentRow.Index].Value.ToString(), "True") == 0)
                 radioButton1.Checked = true;
@@ -183,7 +183,7 @@ namespace QuanLySinhVien
             tbMaKhoa.Focus();
             tbTenKhoa.Clear();
             tbSDT.Clear();
-            btnSave1.Enabled = true;
+            
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -193,18 +193,18 @@ namespace QuanLySinhVien
             tbSiSo2.Clear();
             tbKhoaL2.Clear();
             tbLop2.Clear();
-            btnSave2.Enabled = true;
+            
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
             tbSDT3.Clear();
-            tbGioitinh3.Clear();
-            tbGioitinh3.Focus();
+            tbHoTen3.Clear();
+            tbHoTen3.Focus();
             radioButton1.Checked = false;
             radioButton2.Checked = false;
             dateTimePicker1.Refresh();
-            btnSave3.Enabled = true;
+            
 
         }
 
@@ -245,8 +245,14 @@ namespace QuanLySinhVien
                             csdl.Them(sql);
                             csdl.KetNoi();
                             dtgKhoa.DataSource = csdl.GetData(khoa);
+                            cboKhoa2.DataSource = csdl.GetData(khoa);
+                            cboKhoa2.DisplayMember = "TenKhoa";
+                            cboKhoa2.ValueMember = "MaKhoa";
+                            cboKhoa3.DataSource = csdl.GetData(khoa);
+                            cboKhoa3.DisplayMember = "TenKhoa";
+                            cboKhoa3.ValueMember = "MaKhoa";
 
-                        }
+                    }
 
                         catch (Exception LOI)
                         {
@@ -327,7 +333,7 @@ namespace QuanLySinhVien
                         sw.Write(maSV1);
                         sw.Close();
                         string sql = "insert into SINHVIEN values(N'" + maSV1.ToString() + "', N'" + cboLop1.SelectedValue.ToString() + 
-                                                                    "',N' " + tbGioitinh3.Text.ToString() + "', N'" + (radioButton1.Checked == true ? "True":"False") + 
+                                                                    "',N' " + tbHoTen3.Text.ToString() + "', N'" + (radioButton1.Checked == true ? "True":"False") + 
                                                                     "', N'" + dateTimePicker1.Value.ToString("yyyy/MM/dd") + "', N'" + tbSDT3.Text.ToString() + "')";
                         csdl csdl = new csdl();
                         csdl.Them(sql);
@@ -365,6 +371,184 @@ namespace QuanLySinhVien
             }
             else
                 this.Close();
+        }
+
+        private void btnCapNhap_Click(object sender, EventArgs e)
+        {
+            DialogResult key = MessageBox.Show("Bạn có muốn cập nhập không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (key == DialogResult.Yes)
+            {
+                try
+                {
+                    //SqlConnection cn = new SqlConnection("Data Source=AME\\SQLEXPRESS;Initial Catalog=QuanLySinhVien;Integrated Security=True");
+                    //string sql = "insert into KHOA values(N'" + textBox1.Text.ToString() + "', N'" + textBox2.Text.ToString() + "', " + textBox3.Text.ToString() + ")";
+                    //SqlCommand cmd = new SqlCommand(sql, cn);
+                    //cmd.CommandType = CommandType.Text;
+                    //cn.Open();
+                    //cmd.ExecuteNonQuery();
+                    //cn.Close();
+                    //cn.Dispose();
+                    string khoa = "select * from KHOA";
+                    csdl csdl = new csdl();
+                    string sql = "UPDATE KHOA set TenKhoa =  N'" + tbTenKhoa.Text.ToString() + "', SDT = N' " + tbSDT.Text.ToString() + "' WHERE MaKhoa = N'" + tbMaKhoa.Text.ToString() + "'";
+                    csdl.Them(sql);
+                    csdl.KetNoi();
+                    dtgKhoa.DataSource = csdl.GetData(khoa);
+
+                }
+
+                catch (Exception LOI)
+                {
+                    MessageBox.Show(LOI.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+        }
+
+        private void btnCapNhap2_Click(object sender, EventArgs e)
+        {
+
+            DialogResult key = MessageBox.Show("Bạn có muốn cập nhập không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (key == DialogResult.Yes)
+            {
+                try
+                {
+                    string sql = "UPDATE LOP set SiSo = N'" 
+                        + tbSiSo2.Text.ToString() + 
+                        "', MaKhoa =N'" + cboKhoa2.SelectedValue.ToString() 
+                        + "',TenLop= N'" + tbKhoaL2.Text.ToString() + tbLop2.Text.ToString() + " " + tbNganh2.Text.ToString() 
+                        + "'where MaLop = '" + dtgLop[0, dtgLop.CurrentRow.Index].Value.ToString() + "'";
+                    csdl csdl = new csdl();
+                    csdl.Them(sql);
+                    csdl.KetNoi();
+                    string lop = "select * from LOP where MaKhoa = " + "'" + cboKhoa2.SelectedValue.ToString() + "'";
+                    dtgLop.DataSource = csdl.GetData(lop);
+                }
+
+                catch (Exception LOI)
+                {
+                    MessageBox.Show(LOI.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+        }
+
+        private void btnCapNhap3_Click(object sender, EventArgs e)
+        {
+            {
+                DialogResult key = MessageBox.Show("Bạn có muốn cập nhật không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (key == DialogResult.Yes)
+                {
+                    try
+                    {
+                        string sql = "update SINHVIEN set MaLop = N'" + cboLop1.SelectedValue.ToString() +
+                                                                    "', TenSV =N' " + tbHoTen3.Text.ToString() + "',GioiTinh = N'" + (radioButton1.Checked == true ? "True" : "False") +
+                                                                    "',NgaySinh = N'" + dateTimePicker1.Value.ToString("yyyy/MM/dd") + "',SDT = N'" + tbSDT3.Text.ToString() 
+                                                                    + "' where MaSV = '"+ dtgSinhVien[0, dtgSinhVien.CurrentRow.Index].Value.ToString() + "'";
+                        csdl csdl = new csdl();
+                        csdl.Them(sql);
+                        csdl.KetNoi();
+                        string sinhvien = "select * from SINHVIEN where MaLop = " + "'" + cboLop1.SelectedValue.ToString() + "'";
+                        dtgSinhVien.DataSource = csdl.GetData(sinhvien);
+                    }
+
+                    catch (Exception LOI)
+                    {
+                        MessageBox.Show(LOI.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+            }
+        }
+
+        private void btnXoa3_Click(object sender, EventArgs e)
+        {
+            DialogResult key = MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (key == DialogResult.Yes)
+            {
+                try
+                {
+                    string sql = "DELETE SINHVIEN where MaSV = '" + dtgSinhVien[0, dtgSinhVien.CurrentRow.Index].Value.ToString() + "'";
+                    csdl csdl = new csdl();
+                    csdl.Them(sql);
+                    csdl.KetNoi();
+                    string sinhvien = "select * from SinhVien where MaLop = " + "'" + cboLop1.SelectedValue.ToString() + "'";
+                    dtgSinhVien.DataSource = csdl.GetData(sinhvien);
+                }
+
+                catch (Exception LOI)
+                {
+                    MessageBox.Show(LOI.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            DialogResult key = MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (key == DialogResult.Yes)
+            {
+                try
+                {
+                    string sql = "DELETE KHOA where MaKhoa = '" + tbMaKhoa.Text.ToString() + "'";
+                    csdl csdl = new csdl();
+                    csdl.Them(sql);
+                    csdl.KetNoi();
+                    string khoa = "select * from Khoa ";
+                    dtgKhoa.DataSource = csdl.GetData(khoa);
+                    cboKhoa2.DataSource = csdl.GetData(khoa);
+                    cboKhoa2.DisplayMember = "TenKhoa";
+                    cboKhoa2.ValueMember = "MaKhoa";
+                    cboKhoa3.DataSource = csdl.GetData(khoa);
+                    cboKhoa3.DisplayMember = "TenKhoa";
+                    cboKhoa3.ValueMember = "MaKhoa";
+                }
+
+                catch (Exception LOI)
+                {
+                    MessageBox.Show(LOI.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+        }
+
+        private void btnXoa2_Click(object sender, EventArgs e)
+        {
+            DialogResult key = MessageBox.Show("Bạn có muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (key == DialogResult.Yes)
+            {
+                try
+                {
+                    string sql = "DELETE LOP where MaLop = '" + dtgLop[0, dtgLop.CurrentRow.Index].Value.ToString() + "'";
+                    csdl csdl = new csdl();
+                    csdl.Them(sql);
+                    csdl.KetNoi();
+                    string lop = "select * from LOP where MaKhoa = " + "'" + cboKhoa2.SelectedValue.ToString() + "'";
+                    dtgLop.DataSource = csdl.GetData(lop);
+                }
+
+                catch (Exception LOI)
+                {
+                    MessageBox.Show(LOI.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+        }
+
+        private void tbHoTen3_TextChanged(object sender, EventArgs e)
+        {
+            btnSave3.Enabled = true;
+        }
+
+        private void tbKhoaL2_TextChanged(object sender, EventArgs e)
+        {
+            btnSave2.Enabled = true;
+        }
+
+        private void tbMaKhoa_TextChanged(object sender, EventArgs e)
+        {
+            btnSave3.Enabled = true;
         }
     }
 }

@@ -32,9 +32,10 @@
             this.dtgKhoa = new System.Windows.Forms.DataGridView();
             this.sINHVIENBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.sINHVIENBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.btnCapNhap = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -45,6 +46,8 @@
             this.tbTenKhoa = new System.Windows.Forms.TextBox();
             this.tbMaKhoa = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnXoa2 = new System.Windows.Forms.Button();
+            this.btnCapNhap2 = new System.Windows.Forms.Button();
             this.tbLop2 = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -60,6 +63,8 @@
             this.dtgLop = new System.Windows.Forms.DataGridView();
             this.cboKhoa2 = new System.Windows.Forms.ComboBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnXoa3 = new System.Windows.Forms.Button();
+            this.btnCapNhap3 = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -71,7 +76,7 @@
             this.btnSave3 = new System.Windows.Forms.Button();
             this.btnNew3 = new System.Windows.Forms.Button();
             this.tbSDT3 = new System.Windows.Forms.TextBox();
-            this.tbGioitinh3 = new System.Windows.Forms.TextBox();
+            this.tbHoTen3 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dtgSinhVien = new System.Windows.Forms.DataGridView();
@@ -94,15 +99,11 @@
             this.dtgKhoa.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgKhoa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgKhoa.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dtgKhoa.Location = new System.Drawing.Point(3, 75);
+            this.dtgKhoa.Location = new System.Drawing.Point(3, 110);
             this.dtgKhoa.Name = "dtgKhoa";
-            this.dtgKhoa.Size = new System.Drawing.Size(536, 171);
+            this.dtgKhoa.Size = new System.Drawing.Size(536, 189);
             this.dtgKhoa.TabIndex = 0;
             this.dtgKhoa.SelectionChanged += new System.EventHandler(this.dtgKhoa_SelectionChanged);
-            // 
-            // sINHVIENTableAdapter
-            // 
-            
             // 
             // tabControl1
             // 
@@ -113,11 +114,13 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(550, 275);
+            this.tabControl1.Size = new System.Drawing.Size(550, 328);
             this.tabControl1.TabIndex = 3;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnXoa);
+            this.tabPage1.Controls.Add(this.btnCapNhap);
             this.tabPage1.Controls.Add(this.label6);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.label4);
@@ -131,10 +134,30 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(542, 249);
+            this.tabPage1.Size = new System.Drawing.Size(542, 302);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Khoa";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Location = new System.Drawing.Point(362, 81);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa.TabIndex = 11;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // btnCapNhap
+            // 
+            this.btnCapNhap.Location = new System.Drawing.Point(11, 80);
+            this.btnCapNhap.Name = "btnCapNhap";
+            this.btnCapNhap.Size = new System.Drawing.Size(75, 23);
+            this.btnCapNhap.TabIndex = 10;
+            this.btnCapNhap.Text = "Cập nhập";
+            this.btnCapNhap.UseVisualStyleBackColor = true;
+            this.btnCapNhap.Click += new System.EventHandler(this.btnCapNhap_Click);
             // 
             // label6
             // 
@@ -165,7 +188,7 @@
             // 
             // btnExit1
             // 
-            this.btnExit1.Location = new System.Drawing.Point(443, 43);
+            this.btnExit1.Location = new System.Drawing.Point(443, 81);
             this.btnExit1.Name = "btnExit1";
             this.btnExit1.Size = new System.Drawing.Size(75, 23);
             this.btnExit1.TabIndex = 6;
@@ -176,7 +199,7 @@
             // btnSave1
             // 
             this.btnSave1.Enabled = false;
-            this.btnSave1.Location = new System.Drawing.Point(362, 44);
+            this.btnSave1.Location = new System.Drawing.Point(173, 81);
             this.btnSave1.Name = "btnSave1";
             this.btnSave1.Size = new System.Drawing.Size(75, 23);
             this.btnSave1.TabIndex = 5;
@@ -186,7 +209,7 @@
             // 
             // btnTaoMoi1
             // 
-            this.btnTaoMoi1.Location = new System.Drawing.Point(281, 44);
+            this.btnTaoMoi1.Location = new System.Drawing.Point(92, 81);
             this.btnTaoMoi1.Name = "btnTaoMoi1";
             this.btnTaoMoi1.Size = new System.Drawing.Size(75, 23);
             this.btnTaoMoi1.TabIndex = 4;
@@ -214,9 +237,12 @@
             this.tbMaKhoa.Name = "tbMaKhoa";
             this.tbMaKhoa.Size = new System.Drawing.Size(121, 20);
             this.tbMaKhoa.TabIndex = 1;
+            this.tbMaKhoa.TextChanged += new System.EventHandler(this.tbMaKhoa_TextChanged);
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnXoa2);
+            this.tabPage2.Controls.Add(this.btnCapNhap2);
             this.tabPage2.Controls.Add(this.tbLop2);
             this.tabPage2.Controls.Add(this.label14);
             this.tabPage2.Controls.Add(this.label7);
@@ -234,10 +260,30 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(542, 249);
+            this.tabPage2.Size = new System.Drawing.Size(542, 302);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Lớp";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnXoa2
+            // 
+            this.btnXoa2.Location = new System.Drawing.Point(359, 87);
+            this.btnXoa2.Name = "btnXoa2";
+            this.btnXoa2.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa2.TabIndex = 23;
+            this.btnXoa2.Text = "Xóa";
+            this.btnXoa2.UseVisualStyleBackColor = true;
+            this.btnXoa2.Click += new System.EventHandler(this.btnXoa2_Click);
+            // 
+            // btnCapNhap2
+            // 
+            this.btnCapNhap2.Location = new System.Drawing.Point(18, 87);
+            this.btnCapNhap2.Name = "btnCapNhap2";
+            this.btnCapNhap2.Size = new System.Drawing.Size(75, 23);
+            this.btnCapNhap2.TabIndex = 22;
+            this.btnCapNhap2.Text = "Cập nhập";
+            this.btnCapNhap2.UseVisualStyleBackColor = true;
+            this.btnCapNhap2.Click += new System.EventHandler(this.btnCapNhap2_Click);
             // 
             // tbLop2
             // 
@@ -284,7 +330,7 @@
             // 
             // btnExit2
             // 
-            this.btnExit2.Location = new System.Drawing.Point(436, 58);
+            this.btnExit2.Location = new System.Drawing.Point(440, 87);
             this.btnExit2.Name = "btnExit2";
             this.btnExit2.Size = new System.Drawing.Size(75, 23);
             this.btnExit2.TabIndex = 15;
@@ -294,7 +340,7 @@
             // 
             // btnSave2
             // 
-            this.btnSave2.Location = new System.Drawing.Point(355, 59);
+            this.btnSave2.Location = new System.Drawing.Point(180, 87);
             this.btnSave2.Name = "btnSave2";
             this.btnSave2.Size = new System.Drawing.Size(75, 23);
             this.btnSave2.TabIndex = 14;
@@ -304,7 +350,7 @@
             // 
             // btnNew2
             // 
-            this.btnNew2.Location = new System.Drawing.Point(274, 59);
+            this.btnNew2.Location = new System.Drawing.Point(99, 87);
             this.btnNew2.Name = "btnNew2";
             this.btnNew2.Size = new System.Drawing.Size(75, 23);
             this.btnNew2.TabIndex = 13;
@@ -332,6 +378,7 @@
             this.tbKhoaL2.Name = "tbKhoaL2";
             this.tbKhoaL2.Size = new System.Drawing.Size(121, 20);
             this.tbKhoaL2.TabIndex = 10;
+            this.tbKhoaL2.TextChanged += new System.EventHandler(this.tbKhoaL2_TextChanged);
             // 
             // label1
             // 
@@ -347,9 +394,9 @@
             this.dtgLop.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgLop.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgLop.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dtgLop.Location = new System.Drawing.Point(3, 103);
+            this.dtgLop.Location = new System.Drawing.Point(3, 116);
             this.dtgLop.Name = "dtgLop";
-            this.dtgLop.Size = new System.Drawing.Size(536, 143);
+            this.dtgLop.Size = new System.Drawing.Size(536, 183);
             this.dtgLop.TabIndex = 1;
             this.dtgLop.SelectionChanged += new System.EventHandler(this.dtgLop_SelectionChanged);
             // 
@@ -364,6 +411,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.btnXoa3);
+            this.tabPage3.Controls.Add(this.btnCapNhap3);
             this.tabPage3.Controls.Add(this.label13);
             this.tabPage3.Controls.Add(this.radioButton2);
             this.tabPage3.Controls.Add(this.radioButton1);
@@ -375,7 +424,7 @@
             this.tabPage3.Controls.Add(this.btnSave3);
             this.tabPage3.Controls.Add(this.btnNew3);
             this.tabPage3.Controls.Add(this.tbSDT3);
-            this.tabPage3.Controls.Add(this.tbGioitinh3);
+            this.tabPage3.Controls.Add(this.tbHoTen3);
             this.tabPage3.Controls.Add(this.label3);
             this.tabPage3.Controls.Add(this.label2);
             this.tabPage3.Controls.Add(this.dtgSinhVien);
@@ -384,10 +433,30 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(542, 249);
+            this.tabPage3.Size = new System.Drawing.Size(542, 302);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Sinh Viên";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // btnXoa3
+            // 
+            this.btnXoa3.Location = new System.Drawing.Point(363, 115);
+            this.btnXoa3.Name = "btnXoa3";
+            this.btnXoa3.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa3.TabIndex = 33;
+            this.btnXoa3.Text = "Xóa";
+            this.btnXoa3.UseVisualStyleBackColor = true;
+            this.btnXoa3.Click += new System.EventHandler(this.btnXoa3_Click);
+            // 
+            // btnCapNhap3
+            // 
+            this.btnCapNhap3.Location = new System.Drawing.Point(12, 115);
+            this.btnCapNhap3.Name = "btnCapNhap3";
+            this.btnCapNhap3.Size = new System.Drawing.Size(75, 23);
+            this.btnCapNhap3.TabIndex = 32;
+            this.btnCapNhap3.Text = "Cập nhập";
+            this.btnCapNhap3.UseVisualStyleBackColor = true;
+            this.btnCapNhap3.Click += new System.EventHandler(this.btnCapNhap3_Click);
             // 
             // label13
             // 
@@ -457,7 +526,7 @@
             // 
             // btnExit3
             // 
-            this.btnExit3.Location = new System.Drawing.Point(441, 87);
+            this.btnExit3.Location = new System.Drawing.Point(444, 115);
             this.btnExit3.Name = "btnExit3";
             this.btnExit3.Size = new System.Drawing.Size(75, 23);
             this.btnExit3.TabIndex = 24;
@@ -467,7 +536,7 @@
             // 
             // btnSave3
             // 
-            this.btnSave3.Location = new System.Drawing.Point(360, 87);
+            this.btnSave3.Location = new System.Drawing.Point(174, 115);
             this.btnSave3.Name = "btnSave3";
             this.btnSave3.Size = new System.Drawing.Size(75, 23);
             this.btnSave3.TabIndex = 23;
@@ -477,7 +546,7 @@
             // 
             // btnNew3
             // 
-            this.btnNew3.Location = new System.Drawing.Point(279, 87);
+            this.btnNew3.Location = new System.Drawing.Point(93, 115);
             this.btnNew3.Name = "btnNew3";
             this.btnNew3.Size = new System.Drawing.Size(75, 23);
             this.btnNew3.TabIndex = 22;
@@ -492,12 +561,13 @@
             this.tbSDT3.Size = new System.Drawing.Size(121, 20);
             this.tbSDT3.TabIndex = 21;
             // 
-            // tbGioitinh3
+            // tbHoTen3
             // 
-            this.tbGioitinh3.Location = new System.Drawing.Point(64, 55);
-            this.tbGioitinh3.Name = "tbGioitinh3";
-            this.tbGioitinh3.Size = new System.Drawing.Size(121, 20);
-            this.tbGioitinh3.TabIndex = 19;
+            this.tbHoTen3.Location = new System.Drawing.Point(64, 55);
+            this.tbHoTen3.Name = "tbHoTen3";
+            this.tbHoTen3.Size = new System.Drawing.Size(121, 20);
+            this.tbHoTen3.TabIndex = 19;
+            this.tbHoTen3.TextChanged += new System.EventHandler(this.tbHoTen3_TextChanged);
             // 
             // label3
             // 
@@ -522,9 +592,9 @@
             this.dtgSinhVien.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgSinhVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgSinhVien.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dtgSinhVien.Location = new System.Drawing.Point(3, 115);
+            this.dtgSinhVien.Location = new System.Drawing.Point(3, 144);
             this.dtgSinhVien.Name = "dtgSinhVien";
-            this.dtgSinhVien.Size = new System.Drawing.Size(536, 131);
+            this.dtgSinhVien.Size = new System.Drawing.Size(536, 155);
             this.dtgSinhVien.TabIndex = 2;
             this.dtgSinhVien.SelectionChanged += new System.EventHandler(this.DtgSinhVien_SelectionChanged);
             // 
@@ -550,7 +620,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(550, 275);
+            this.ClientSize = new System.Drawing.Size(550, 328);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -617,9 +687,15 @@
         private System.Windows.Forms.Button btnSave3;
         private System.Windows.Forms.Button btnNew3;
         private System.Windows.Forms.TextBox tbSDT3;
-        private System.Windows.Forms.TextBox tbGioitinh3;
+        private System.Windows.Forms.TextBox tbHoTen3;
         private System.Windows.Forms.TextBox tbLop2;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button btnXoa;
+        private System.Windows.Forms.Button btnCapNhap;
+        private System.Windows.Forms.Button btnXoa2;
+        private System.Windows.Forms.Button btnCapNhap2;
+        private System.Windows.Forms.Button btnXoa3;
+        private System.Windows.Forms.Button btnCapNhap3;
     }
 }
 
